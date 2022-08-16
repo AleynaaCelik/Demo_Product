@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concrete
 {
-   public  class Customer
+    public class Company
     {
-        public int Id { get; set; }
-        public String Name { get; set; }
-        public String City { get; set; }
         public int CompanyId { get; set; }
-        public Company Company { get; set; }
-
+        public string  Name { get; set; }
+        public List<Customer> Customers { get; set; }
     }
 }

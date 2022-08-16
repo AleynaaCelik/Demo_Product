@@ -18,6 +18,7 @@ namespace DataAcessLayer.Concrete
         public DbSet<Product> Products { get; set; } //c# ve sql tablosunda kullanacağım isimlendirme
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Company> Companies { get; set; }
     
 }
 }
