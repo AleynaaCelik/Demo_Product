@@ -36,12 +36,32 @@ namespace Demo_Product.Controllers
             }
             else
             {
-                foreach(var item in results.Errors)
+                foreach (var item in results.Errors)
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
             }
             return View();
         }
+        public IActionResult DeleteProduct(int id)
+        {
+            var value  = productmanager.TGetById(id);
+            productmanager.TDelete(value);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult UpdateProduct(int id)
+        {
+            var value = productmanager.TGetById(id);
+            return View(value);
+        }
+        [HttpPost]
+        public IActionResult UpdateProduct(Product p)
+        {
+        
+            productmanager.TUpdate(p);
+            return RedirectToAction("Index");
+        }
+     }
     }
-}
+
