@@ -9,6 +9,6 @@ namespace DataAcessLayer.Abstract
 {
     public interface ICustomerDal:IGenericDal<Customer>
     {
-      
+        List<Customer> GetCustomerListWithCompany();
     }
 }
