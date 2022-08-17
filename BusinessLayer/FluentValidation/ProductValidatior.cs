@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.FluentValidition
 {
-    public class ProductValidatior:AbstractValidator<Product>
+    public class CompanyValidatior:AbstractValidator<Product>
     {
-        public ProductValidatior()
+        public CompanyValidatior()
         {
             RuleFor(x => x.Name).NotEmpty().WithMessage("Ürün adıboş geçilemez");
             RuleFor(x => x.Name).MinimumLength(3).WithMessage("Ürün adı en az 3 karakter olmalıdır.");

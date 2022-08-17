@@ -27,7 +27,7 @@ namespace Demo_Product.Controllers
         [HttpPost]
         public IActionResult AddProduct(Product p)
         {
-            ProductValidatior validationRules = new ProductValidatior();
+            CompanyValidatior validationRules = new CompanyValidatior();
             ValidationResult results = validationRules.Validate(p);
             if (results.IsValid)
             {
