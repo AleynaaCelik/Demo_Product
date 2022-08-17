@@ -1,8 +1,16 @@
-﻿
+﻿@model EntityLayer.Concrete.Company
 @{
     ViewData["Title"] = "UpdateCompany";
     Layout = "~/Views/Shared/_UILayout.cshtml";
 }
 
-<h1>UpdateCompany</h1>
+<form method="post">
+    @Html.Label("Firma ID")
+    @Html.TextBoxFor(x => x.CompanyId, new { @class = "form-control" })
+    </br>
+    @Html.Label("Firma  Adı")
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    </br>
+    <button class="btn btn-info">Firmayı Güncelle</button>
+</form>
 
