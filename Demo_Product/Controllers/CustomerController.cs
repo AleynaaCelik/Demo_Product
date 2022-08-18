@@ -4,6 +4,7 @@ using DataAcessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,14 @@ namespace Demo_Product.Controllers
         [HttpGet]
         public IActionResult AddCustomer()
         {
+           CompanyManager companyManager = new CompanyManager(new EfCompanyDal());
+            List<SelectListItem> values = (from x in companyManager.TGetlist()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.Name,
+                                               Value = x.CompanyId.ToString()
+                                           }).ToList();
+            ViewBag.v = values;
             return View();
         }
         [HttpPost]

@@ -13,6 +13,9 @@
     @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
     @Html.ValidationMessageFor(x => x.City)
     </br>
+    @Html.Label("Firma Seçiniz");
+    @Html.DropDownListFor(x=>x.CompanyId,(List<SelectListItem>)ViewBag.v,new { @class="form-control"})
+    </br>
     <button class="btn btn-primary">Müşteriyi Ekle</button>
 </form>
 
