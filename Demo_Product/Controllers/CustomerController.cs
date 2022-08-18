@@ -14,7 +14,9 @@ namespace Demo_Product.Controllers
 {
     public class CustomerController : Controller
     {
+        
         CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+        CompanyManager companyManager = new CompanyManager(new EfCompanyDal());
         public IActionResult Index()
         {
             var values = customerManager.GetCustomerListWithCompany();
@@ -23,7 +25,7 @@ namespace Demo_Product.Controllers
         [HttpGet]
         public IActionResult AddCustomer()
         {
-           CompanyManager companyManager = new CompanyManager(new EfCompanyDal());
+           
             List<SelectListItem> values = (from x in companyManager.TGetlist()
                                            select new SelectListItem
                                            {
@@ -61,6 +63,13 @@ namespace Demo_Product.Controllers
         [HttpGet]
         public IActionResult UpdateCustomer(int id)
         {
+            List<SelectListItem> values = (from x in companyManager.TGetlist()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.Name,
+                                               Value = x.CompanyId.ToString()
+                                           }).ToList();
+            ViewBag.v = values;
             var value = customerManager.TGetById(id);
             return View(value);
         }
