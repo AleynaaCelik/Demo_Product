@@ -29,6 +29,27 @@ namespace Demo_Product.Controllers
             userEditViewModel.Gender = values.Gender;
             return View(userEditViewModel);
         }
-        
+        [HttpPost]
+        public async Task<IActionResult> Index(UserEditViewModel p)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            user.Name = p.Name;
+            user.Surname = p.SurName;
+            user.Email = p.Mail;
+            user.Gender = p.Gender;
+            user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, p.Password);
+            var result = await _userManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Product");
+            }
+            else
+            {
+                //Hata mesajları
+            }
+            return View();
+        }
+
+
     }
 }
