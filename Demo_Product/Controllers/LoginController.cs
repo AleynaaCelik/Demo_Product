@@ -39,6 +39,12 @@ namespace Demo_Product.Controllers
                     ModelState.AddModelError("", "Hatalı Kullanıcı adı veya şifre");                }
             }
             return View();
+
+        }
+        public async Task<ActionResult> LogOut()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index","Login");
         }
     }
 }
